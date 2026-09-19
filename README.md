@@ -1,2 +1,9 @@
-# monkey-shakespeare-web
-《猿与莎士比亚》Godot Web 构建产物与 GitHub Pages 部署（源码在私有仓库，本仓库只保存构建输出）
+# 猴子打字工作室 · Web 构建产物
+
+本仓库是《猿与莎士比亚》的 Godot Web 构建产物与 GitHub Pages 部署仓库。它只保存导出后的静态文件，不包含游戏源码、脚本或素材工程；源码在私有仓库中，由 CI 在检查通过后构建并发布到这里。
+
+- 在线试玩：https://gongfpp.github.io/monkey-shakespeare-web/
+- 部署分支：`gh-pages`（没有长期历史，每次发布由 CI 强制覆盖为一次提交）
+- 授权：构建产物按 AGPL-3.0 与商业授权双授权发布，构建内已包含第三方许可信息。
+
+请勿直接向本仓库提交修改：`gh-pages` 的内容会在下次发布时被覆盖。
