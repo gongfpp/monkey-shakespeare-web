@@ -83,6 +83,21 @@ jobs:
         working-directory: source
         run: npm run ea:release
 
+      - name: Check WebGL allocation stability in release
+        working-directory: source
+        timeout-minutes: 10
+        run: |
+          npm ci
+          npx playwright install --with-deps chromium
+          node tools/godot-preview.mjs &
+          preview_pid=$!
+          trap 'kill "$preview_pid"' EXIT
+          for ((attempt=0; attempt<20; attempt++)); do
+            if curl -fsS http://127.0.0.1:4187/build-info.json; then break; fi
+            sleep 1
+          done
+          npm run ea:webgl
+
       - name: Upload only Web build
         uses: actions/upload-pages-artifact@v3
         with:
